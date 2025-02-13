@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data Table</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            border: none;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 18px;
+        }
+        
+        th:hover {
+            background: linear-gradient(135deg, #4834d4, #6c5ce7);
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #ffeaa7;
+            transition: 0.3s;
+        }
+        
+        input {
+            margin-bottom: 20px;
+            padding: 12px;
+            width: 320px;
+            border: none;
+            border-radius: 25px;
+            outline: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        input:focus {
+            box-shadow: 0 0 12px rgba(108, 92, 231, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <h2 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">Student Data Table</h2>
+    <input type="text" id="search" placeholder="Search by name..." onkeyup="searchTable()">
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">Student ID</th>
+                <th onclick="sortTable(1)">Last Name</th>
+                <th onclick="sortTable(2)">First Name</th>
+                <th onclick="sortTable(3)">Course</th>
+                <th onclick="sortTable(4)">Age</th>
+                <th onclick="sortTable(5)">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const xmlString = `
+                <students>
+                    <student>
+                        <studentID>1001</studentID>
+                        <lastName>Garcia</lastName>
+                        <firstName>Juan</firstName>
+                        <age>21</age>
+                        <course>Computer Science</course>
+                        <email>juan.garcia@example.com</email>
+                    </student>
+                    <student>
+                        <studentID>1002</studentID>
+                        <lastName>Santos</lastName>
+                        <firstName>Maria</firstName>
+                        <age>20</age>
+                        <course>Information Technology</course>
+                        <email>maria.santos@example.com</email>
+                    </student>
+                    <student>
+                        <studentID>1002</studentID>
+                        <lastName>Santos</lastName>
+                        <firstName>Maria</firstName>
+                        <age>20</age>
+                        <course>Information Technology</course>
+                        <email>maria.santos@example.com</email>
+                    </student>
+                    <student>
+                        <studentID>1002</studentID>
+                        <lastName>Santos</lastName>
+                        <firstName>Maria</firstName>
+                        <age>20</age>
+                        <course>Information Technology</course>
+                        <email>maria.santos@example.com</email>
+                    </student>
+                    <student>
+                        <studentID>1002</studentID>
+                        <lastName>Santos</lastName>
+                        <firstName>Maria</firstName>
+                        <age>20</age>
+                        <course>Information Technology</course>
+                        <email>maria.santos@example.com</email>
+                    </student>
+                    <student>
+                        <studentID>1002</studentID>
+                        <lastName>Santos</lastName>
+                        <firstName>Maria</firstName>
+                        <age>20</age>
+                        <course>Information Technology</course>
+                        <email>maria.santos@example.com</email>
+                    </student>
+                    <student>
+                        <studentID>1002</studentID>
+                        <lastName>Santos</lastName>
+                        <firstName>Maria</firstName>
+                        <age>20</age>
+                        <course>Information Technology</course>
+                        <email>maria.santos@example.com</email>
+                    </student>
+                    <student>
+                        <studentID>1002</studentID>
+                        <lastName>Santos</lastName>
+                        <firstName>Maria</firstName>
+                        <age>20</age>
+                        <course>Information Technology</course>
+                        <email>maria.santos@example.com</email>
+                    </student>
+                </students>`;
+
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+            const students = xmlDoc.getElementsByTagName("student");
+            const tableBody = document.querySelector("#studentTable tbody");
+
+            for (let student of students) {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${student.getElementsByTagName("studentID")[0].textContent}</td>
+                    <td>${student.getElementsByTagName("lastName")[0].textContent}</td>
+                    <td>${student.getElementsByTagName("firstName")[0].textContent}</td>
+                    <td>${student.getElementsByTagName("course")[0].textContent}</td>
+                    <td>${student.getElementsByTagName("age")[0].textContent}</td>
+                    <td>${student.getElementsByTagName("email")[0].textContent}</td>
+                `;
+                tableBody.appendChild(row);
+            }
+        });
+    </script>
+</body>
+</html>
+
