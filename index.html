@@ -1,179 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Data Table</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
-        th, td {
-            border: none;
-            padding: 15px;
-            text-align: left;
-        }
-        
-        th {
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            color: white;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-size: 18px;
-        }
-        
-        th:hover {
-            background: linear-gradient(135deg, #4834d4, #6c5ce7);
-        }
-        
-        tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        
-        tr:hover {
-            background-color: #ffeaa7;
-            transition: 0.3s;
-        }
-        
-        input {
-            margin-bottom: 20px;
-            padding: 12px;
-            width: 320px;
-            border: none;
-            border-radius: 25px;
-            outline: none;
-            transition: all 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        input:focus {
-            box-shadow: 0 0 12px rgba(108, 92, 231, 0.5);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Data Table</title>
+  <style>
+      body {
+          font-family: 'Poppins', sans-serif;
+          text-align: center;
+          background: linear-gradient(135deg, #8B0000, #DEB887);
+          color: #333;
+          margin: 0;
+          padding: 20px;
+      }
+      table {
+          width: 80%;
+          margin: 20px auto;
+          border-collapse: collapse;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          background: #F5DEB3;
+          border-radius: 12px;
+          overflow: hidden;
+      }
+      th, td {
+          border: none;
+          padding: 15px;
+          text-align: left;
+      }
+      th {
+          background: linear-gradient(135deg, #A52A2A, #8B0000);
+          color: white;
+          cursor: pointer;
+      }
+      tr:nth-child(even) {
+          background-color: #E6BE8A;
+      }
+      tr:hover {
+          background-color: #D2B48C;
+      }
+      input {
+          margin-bottom: 20px;
+          padding: 12px;
+          width: 320px;
+          border: none;
+          border-radius: 25px;
+          outline: none;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+  </style>
+  <script>
+      // Object to track sort direction for each column index.
+      var sortDirections = {};
+
+      function sortTable(columnIndex, type) {
+          let table = document.getElementById("studentTable");
+          let tbody = table.tBodies[0];
+          let rows = Array.from(tbody.rows);
+
+          // Toggle the sort direction: default to ascending if undefined
+          sortDirections[columnIndex] = sortDirections[columnIndex] === 'asc' ? 'desc' : 'asc';
+
+          let sortedRows;
+          if (type === 'num') {
+              sortedRows = rows.sort((a, b) => {
+                  let aVal = Number(a.cells[columnIndex].innerText);
+                  let bVal = Number(b.cells[columnIndex].innerText);
+                  return sortDirections[columnIndex] === 'asc' ? aVal - bVal : bVal - aVal;
+              });
+          } else {
+              sortedRows = rows.sort((a, b) => {
+                  let aVal = a.cells[columnIndex].innerText.toLowerCase();
+                  let bVal = b.cells[columnIndex].innerText.toLowerCase();
+                  return sortDirections[columnIndex] === 'asc' 
+                          ? aVal.localeCompare(bVal) 
+                          : bVal.localeCompare(aVal);
+              });
+          }
+
+          // Clear existing rows and append sorted rows
+          tbody.innerHTML = "";
+          sortedRows.forEach(row => tbody.appendChild(row));
+      }
+
+      // Updated search function: search across all columns.
+      function searchTable() {
+          let input = document.getElementById("search").value.toLowerCase();
+          let table = document.getElementById("studentTable");
+          let tbody = table.tBodies[0];
+          let rows = Array.from(tbody.rows);
+
+          rows.forEach(row => {
+              // Convert all cells in the row to an array and check if any cell contains the input text.
+              let cells = Array.from(row.cells);
+              let found = cells.some(cell => cell.innerText.toLowerCase().indexOf(input) > -1);
+              row.style.display = found ? "" : "none";
+          });
+      }
+  </script>
 </head>
 <body>
-    <h2 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">Student Data Table</h2>
-    <input type="text" id="search" placeholder="Search by name..." onkeyup="searchTable()">
-    <table id="studentTable">
-        <thead>
-            <tr>
-                <th onclick="sortTable(0)">Student ID</th>
-                <th onclick="sortTable(1)">Last Name</th>
-                <th onclick="sortTable(2)">First Name</th>
-                <th onclick="sortTable(3)">Course</th>
-                <th onclick="sortTable(4)">Age</th>
-                <th onclick="sortTable(5)">Email</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const xmlString = `
-                <students>
-                    <student>
-                        <studentID>1001</studentID>
-                        <lastName>Garcia</lastName>
-                        <firstName>Juan</firstName>
-                        <age>21</age>
-                        <course>Computer Science</course>
-                        <email>juan.garcia@example.com</email>
-                    </student>
-                    <student>
-                        <studentID>1002</studentID>
-                        <lastName>Santos</lastName>
-                        <firstName>Maria</firstName>
-                        <age>20</age>
-                        <course>Information Technology</course>
-                        <email>maria.santos@example.com</email>
-                    </student>
-                    <student>
-                        <studentID>1002</studentID>
-                        <lastName>Santos</lastName>
-                        <firstName>Maria</firstName>
-                        <age>20</age>
-                        <course>Information Technology</course>
-                        <email>maria.santos@example.com</email>
-                    </student>
-                    <student>
-                        <studentID>1002</studentID>
-                        <lastName>Santos</lastName>
-                        <firstName>Maria</firstName>
-                        <age>20</age>
-                        <course>Information Technology</course>
-                        <email>maria.santos@example.com</email>
-                    </student>
-                    <student>
-                        <studentID>1002</studentID>
-                        <lastName>Santos</lastName>
-                        <firstName>Maria</firstName>
-                        <age>20</age>
-                        <course>Information Technology</course>
-                        <email>maria.santos@example.com</email>
-                    </student>
-                    <student>
-                        <studentID>1002</studentID>
-                        <lastName>Santos</lastName>
-                        <firstName>Maria</firstName>
-                        <age>20</age>
-                        <course>Information Technology</course>
-                        <email>maria.santos@example.com</email>
-                    </student>
-                    <student>
-                        <studentID>1002</studentID>
-                        <lastName>Santos</lastName>
-                        <firstName>Maria</firstName>
-                        <age>20</age>
-                        <course>Information Technology</course>
-                        <email>maria.santos@example.com</email>
-                    </student>
-                    <student>
-                        <studentID>1002</studentID>
-                        <lastName>Santos</lastName>
-                        <firstName>Maria</firstName>
-                        <age>20</age>
-                        <course>Information Technology</course>
-                        <email>maria.santos@example.com</email>
-                    </student>
-                </students>`;
-
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(xmlString, "text/xml");
-            const students = xmlDoc.getElementsByTagName("student");
-            const tableBody = document.querySelector("#studentTable tbody");
-
-            for (let student of students) {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${student.getElementsByTagName("studentID")[0].textContent}</td>
-                    <td>${student.getElementsByTagName("lastName")[0].textContent}</td>
-                    <td>${student.getElementsByTagName("firstName")[0].textContent}</td>
-                    <td>${student.getElementsByTagName("course")[0].textContent}</td>
-                    <td>${student.getElementsByTagName("age")[0].textContent}</td>
-                    <td>${student.getElementsByTagName("email")[0].textContent}</td>
-                `;
-                tableBody.appendChild(row);
-            }
-        });
-    </script>
+  <h2 style="color: white;">Student Data Table</h2>
+  <input type="text" id="search" placeholder="Search..." onkeyup="searchTable()">
+  <table id="studentTable">
+      <thead>
+          <tr>
+              <th onclick="sortTable(0, 'num')">Student ID</th>
+              <th onclick="sortTable(1, 'str')">Last Name</th>
+              <th onclick="sortTable(2, 'str')">First Name</th>
+              <th onclick="sortTable(3, 'str')">Course</th>
+              <th onclick="sortTable(4, 'num')">Age</th>
+              <th onclick="sortTable(5, 'str')">Email</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr><td>1001</td><td>Garcia</td><td>Juan</td><td>Computer Science</td><td>21</td><td>juan.garcia@example.com</td></tr>
+          <tr><td>1002</td><td>Santos</td><td>Maria</td><td>Information Technology</td><td>20</td><td>maria.santos@example.com</td></tr>
+          <tr><td>1003</td><td>Cruz</td><td>Jose</td><td>Engineering</td><td>22</td><td>jose.cruz@example.com</td></tr>
+          <tr><td>1004</td><td>Reyes</td><td>Ana</td><td>Business Administration</td><td>21</td><td>ana.reyes@example.com</td></tr>
+          <tr><td>1005</td><td>Mendoza</td><td>Ramon</td><td>Accounting</td><td>23</td><td>ramon.mendoza@example.com</td></tr>
+          <tr><td>1006</td><td>Torres</td><td>Liza</td><td>Nursing</td><td>19</td><td>liza.torres@example.com</td></tr>
+          <tr><td>1007</td><td>Villanueva</td><td>Mark</td><td>Architecture</td><td>20</td><td>mark.villanueva@example.com</td></tr>
+          <tr><td>1008</td><td>Flores</td><td>Susan</td><td>Psychology</td><td>22</td><td>susan.flores@example.com</td></tr>
+          <tr><td>1009</td><td>Rodriguez</td><td>Eric</td><td>Law</td><td>21</td><td>eric.rodriguez@example.com</td></tr>
+          <tr><td>1010</td><td>Gomez</td><td>Clarissa</td><td>Education</td><td>20</td><td>clarissa.gomez@example.com</td></tr>
+          <tr><td>1011</td><td>Diaz</td><td>Albert</td><td>History</td><td>23</td><td>albert.diaz@example.com</td></tr>
+          <tr><td>1012</td><td>Bautista</td><td>Michelle</td><td>Biology</td><td>19</td><td>michelle.bautista@example.com</td></tr>
+          <tr><td>1013</td><td>Navarro</td><td>Henry</td><td>Chemistry</td><td>21</td><td>henry.navarro@example.com</td></tr>
+          <tr><td>1014</td><td>Perez</td><td>Emily</td><td>Mathematics</td><td>20</td><td>emily.perez@example.com</td></tr>
+          <tr><td>1015</td><td>Martinez</td><td>Carlos</td><td>Physics</td><td>22</td><td>carlos.martinez@example.com</td></tr>
+      </tbody>
+  </table>
 </body>
 </html>
-
