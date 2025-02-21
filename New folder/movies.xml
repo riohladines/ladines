@@ -40,4 +40,60 @@
         <summary>Despite having an amazing first date, Bea and Ben's initial attraction quickly turns sour...</summary>
         <poster>assets/Anyone But You Poster.jpg</poster>
     </movie>
+        <movie>
+        <title>Black Panther: Wakanda Forever</title>
+        <year>2022</year>
+        <genre>Action, Adventure</genre>
+        <director>Ryan Coogler</director>
+        <summary>As the Black Panther, T'Challa has fought valiantly to protect his people and his kingdom...</summary>
+        <poster>assets/Black Panther Poster.jpg</poster>
+    </movie>
+    <movie>
+        <title>Doctor Strange in the Multiverse of Madness</title>
+        <year>2022</year>
+        <genre>Action, Adventure</genre>
+        <director>Sam Raimi</director>
+        <summary>After the events of Avengers: Endgame, Dr. Stephen Strange continues his research on the Time Stone...</summary>
+        <poster>assets/Doctor Strange Poster.jpeg</poster>   
+    </movie>
+    <movie>
+        <title>Thor: Love and Thunder</title>
+        <year>2022</year>
+        <genre>Action, Adventure</genre>
+        <director>Taika Waititi</director>
+        <summary>Love and Thunder will see the return of Natalie Portman as Jane Foster, who will become the Mighty Thor...</summary>
+        <poster>assets/Thor Poster.webp</poster>
+    </movie>
+    <movie>
+        <title>Avatar: The Way of Water</title>
+        <year>2022</year>
+        <genre>Action, Adventure</genre>
+        <director>James Cameron</director>
+        <summary>Twelve years after exploring Pandora and joining the Na'vi, Jake Sully has formed a family with Neytiri...</summary>
+        <poster>assets/Away Poster.webp</poster>
+    </movie>
+    <movie>
+        <title>Avatar: The Seed Bearer</title>
+        <year>2024</year>
+        <genre>Action, Adventure</genre>
+        <director>James Cameron</director>
+        <summary>Sequel to Avatar: The Way of Water...</summary>
+        <poster>assets/Seed Poster.jpg</poster>
+    </movie>
+    <movie>
+        <title>Avatar: The Tulkun Rider</title>
+        <year>2026</year>
+        <genre>Action, Adventure</genre>
+        <director>James Cameron</director>
+        <summary>Sequel to Avatar: The Seed Bearer...</summary>
+        <poster>assets/Rider Poster.jpg</poster>   
+    </movie>
+    <movie>
+        <title>Avatar: The Quest for Eywa</title>
+        <year>2028</year>
+        <genre>Action, Adventure</genre>
+        <director>James Cameron</director>
+        <summary>Sequel to Avatar: The Tulkun Rider...</summary>
+        <poster>assets/Eywa Poster.avif</poster>   
+    </movie>
 </movies>
