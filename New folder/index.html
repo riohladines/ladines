@@ -3,74 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <title>Movie List</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-        }.container {
+        }
+        .container {
             width: 100%;
             height: 100%;
-        }header {
+        }
+        header {
             background-color: #141414;
             color: white;
             padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }header img {
+        }
+        header img {
             height: 30px;
-        }.nav-links {
+        }
+        .nav-links {
             display: flex;
             gap: 20px;
-        }.nav-links a {
+        }
+        .nav-links a {
             text-decoration: none;
             color: white;
             font-weight: bold;
-        }.nav-links a:hover {
+        }
+        .nav-links a:hover {
             color: #e50914;
-        }.hero {
+        }
+        .hero {
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg');
             background-size: cover;
             background-position: center;
             height: 600px;
             position: relative;
-        }.hero .overlay {
+        }
+        .hero .overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             background: rgba(0, 0, 0, 0.5);
-        }.hero .content {
+        }
+        .hero .content {
             position: absolute;
             bottom: 50px;
             left: 40px;
             color: white;
-        }.hero .content h1 {
+        }
+        .hero .content h1 {
             font-size: 3em;
             margin-bottom: 20px;
-        }.hero .content p {
+        }
+        .hero .content p {
             font-size: 1.2em;
-        }.movie-grid {
+        }
+        .movie-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
             padding: 20px;
-        }.movie-card {
+        }
+        .movie-card {
             background-color: #333;
             border-radius: 5px;
             overflow: hidden;
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             will-change: transform;
-        }.movie-card img {
+        }
+        .movie-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
-        }.movie-card .movie-info {
+        }
+        .movie-card .movie-info {
             position: absolute;
             bottom: 10px;
             left: 10px;
@@ -78,12 +93,15 @@
             opacity: 0;
             transform: translateX(-50px);
             transition: opacity 0.3s ease, transform 0.3s ease;
-        }.movie-card:hover {
+        }
+        .movie-card:hover {
             transform: translateX(20px);
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
-        }.movie-card:hover img {
+        }
+        .movie-card:hover img {
             transform: scale(1.05); 
-        }.movie-card:hover .movie-info {
+        }
+        .movie-card:hover .movie-info {
             opacity: 1; 
             transform: translateX(0);
         }
@@ -122,65 +140,62 @@
     </style>
 </head>
 <body>
-<div class="container">
     <header>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg" alt="Netflix Logo">
-        <div class="nav-links">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg" alt="Logo">
+        <nav class="nav-links">
             <a href="#">Home</a>
-            <a href="#">Series</a>
             <a href="#">Movies</a>
-            <a href="#">New & Popular</a>
-            <a href="#">My List</a>
-        </div>
+            <a href="#">Series</a>
+            <a href="#">Contact</a>
+        </nav>
     </header>
-    <section class="hero">
+    <div class="hero">
         <div class="overlay"></div>
         <div class="content">
-            <h1>Enjoy the Latest Movies</h1>
-            <p>Stream now, anytime, anywhere.</p>
+            <h1>Welcome to Movie Hub</h1>
+            <p>Your favorite movies, all in one place.</p>
         </div>
-    </section>
-    <section class="movie-grid">
-        <div class="movie-card">
-            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQnQxiRw2AKnp35lMuIOb5zl8NtOAi_WaBxXum51MERnVROvVCI" alt="Movie Poster">
-            <div class="movie-info">
-                <h3>Movie Title</h3>
-                <p>Some brief description or info about the movie.</p>
-            </div>
-        </div>
-        <div class="movie-card">
-            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*68X3wlJ6vVS6DlwI1IfDHQ.jpeg" alt="Movie Poster">
-            <div class="movie-info">
-                <h3>Movie Title</h3>
-                <p>Some brief description or info about the movie.</p>
-            </div>
-        </div>
-        <div class="movie-card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OKpl9xwHhS9hSlLSJSYdF3tG8YKCcDVw-PeamGSd15DBUUL6" alt="Movie Poster">
-            <div class="movie-info">
-                <h3>Movie Title</h3>
-                <p>Some brief description or info about the movie.</p>
-            </div>
-        </div>
-        <div class="movie-card">
-            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR8Ku1Dd5vUv9fYrb5J6rCDzbMJPCCTAH58Er2FRz53xIuSXXkY" alt="Movie Poster">
-            <div class="movie-info">
-                <h3>Movie Title</h3>
-                <p>Some brief description or info about the movie.</p>
-            </div>
-        </div>
-        <div class="movie-card">
-            <img src="https://preview.redd.it/anyone-but-you-sydney-sweeney-glen-powell-official-poster-v0-awpvpjqygv2c1.jpeg?width=640&crop=smart&auto=webp&s=03719ec6aa53a0fcd9c9fc75b3368e7fc9c491a1" alt="Movie Poster">
-            <div class="movie-info">
-                <h3>Movie Title</h3>
-                <p>Some brief description or info about the movie.</p>
-            </div>
-        </div>
-    </section>
+    </div>
+    <div class="movie-grid" id="movies-container"></div>
     <footer>
-        <p>&copy; Rm2kworld</p>
-        <p><a href="#">Terms & Conditions</a> | <a href="#">Privacy</a></p>
+        <p>&copy; 2025 Movie Hub. All rights reserved.</p>
     </footer>
-</div>
+    <script>
+        function loadXML() {
+            fetch('movies.xml')
+                .then(response => response.text())
+                .then(xmlString => {
+                    let parser = new DOMParser();
+                    let xmlDoc = parser.parseFromString(xmlString, "text/xml");
+                    displayMovies(xmlDoc);
+                })
+                .catch(error => console.error("Error loading XML:", error));
+        }
+        function displayMovies(xmlDoc) {
+            let movies = xmlDoc.getElementsByTagName("movie");
+            let container = document.getElementById("movies-container");
+            for (let i = 0; i < movies.length; i++) {
+                let title = movies[i].getElementsByTagName("title")[0].textContent;
+                let year = movies[i].getElementsByTagName("year")[0].textContent;
+                let genre = movies[i].getElementsByTagName("genre")[0].textContent;
+                let director = movies[i].getElementsByTagName("director")[0].textContent;
+                let summary = movies[i].getElementsByTagName("summary")[0].textContent;
+                let poster = movies[i].getElementsByTagName("poster")[0].textContent;
+                let movieDiv = document.createElement("div");
+                movieDiv.classList.add("movie-card");
+                movieDiv.innerHTML = `
+                    <img src="${poster}" alt="${title}">
+                    <div class="movie-info">
+                        <h2>${title} (${year})</h2>
+                        <p><strong>Genre:</strong> ${genre}</p>
+                        <p><strong>Director:</strong> ${director}</p>
+                        <p>${summary}</p>
+                    </div>
+                `;
+                container.appendChild(movieDiv);
+            }
+        }
+        window.onload = loadXML;
+    </script>
 </body>
 </html>
