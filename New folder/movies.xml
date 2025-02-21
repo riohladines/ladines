@@ -1,42 +1,43 @@
-<movie>
-<title>The Marvels</title>
-<year>2023</year>
-<genre>Action, Adventure</genre>
-<director>Nia DaCosta</director>
-<summary>Carol Danvers, aka Captain Marvel, has reclaimed her identity from the tyrannical Kree and taken revenge on the Supreme Intelligence. However, unintended consequences see her shouldering the burden of a destabilized universe. When her duties send her to an anomalous wormhole linked to a Kree revolut… MORE
-</summary>
-<poster></poster>
-</movie>
-<movie>
-<title>Parasite</title>
-<year>2019</year>
-<genre>Thriller, Comedy</genre>
-<director>Bong Joon-Ho</director>
-<summary>Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.</summary>
-<poster></poster>
-</movie>
-<movie>
-<title>Spider-Man: Across the Spider-Verse</title>
-<year>2023</year>
-<genre>Action, Sci-fi</genre>
-<director>Joaquim Dos Santos, Kemp Powers, Justin K. Thompson</director>
-<summary>After reuniting with Gwen Stacy, Brooklyn's full-time, friendly neighborhood Spider-Man is catapulted across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence. However, when the heroes clash on how to handle a new threat, Miles finds himself pitted against the other Spiders. He must soon redefine what it means to be a hero so he can save the people he loves most.</summary>
-<poster></poster>
-</movie>
-<movie>
-<title>Incantation</title>
-<year>2022</year>
-<genre>Horror, Documentary</genre>
-<director>Kevin Ko</director>
-<summary>Six years ago, Li Ronan is cursed after breaking a religious taboo; now, she must protect her daughter from the consequences of her actions.</summary>
-<poster></poster>
-</movie>
-<movie>
-<title>Anyone But You</title>
-<year>2023</year>
-<genre>2023</genre>
-<director>Will Gluck, Joe Roth, Jeff Kirschenbaum</director>
-<summary>Despite having an amazing first date, Bea and Ben's initial attraction quickly turns sour. When they unexpectedly find themselves at a destination wedding in Australia, the pair pretend to be the perfect couple to keep up appearances.
-</summary>
-<poster></poster>
-</movie>
+<?xml version="1.0" encoding="UTF-8"?>
+<movies>
+    <movie>
+        <title>The Marvels</title>
+        <year>2023</year>
+        <genre>Action, Adventure</genre>
+        <director>Nia DaCosta</director>
+        <summary>Carol Danvers, aka Captain Marvel, has reclaimed her identity from the tyrannical Kree...</summary>
+        <poster>assets/The Marvels Poster.jpg</poster>
+    </movie>
+    <movie>
+        <title>Parasite</title>
+        <year>2019</year>
+        <genre>Thriller, Comedy</genre>
+        <director>Bong Joon-Ho</director>
+        <summary>Greed and class discrimination threaten the newly formed symbiotic relationship...</summary>
+        <poster>assets/Parasite Poster.webp</poster>
+    </movie>
+    <movie>
+        <title>Spider-Man: Across the Spider-Verse</title>
+        <year>2023</year>
+        <genre>Action, Sci-fi</genre>
+        <director>Joaquim Dos Santos, Kemp Powers, Justin K. Thompson</director>
+        <summary>Miles Morales is catapulted across the Multiverse, where he encounters a team of Spider-People...</summary>
+        <poster>assets/Spider-Verse Poster.jpg</poster>
+    </movie>
+    <movie>
+        <title>Incantation</title>
+        <year>2022</year>
+        <genre>Horror, Documentary</genre>
+        <director>Kevin Ko</director>
+        <summary>Six years ago, Li Ronan is cursed after breaking a religious taboo...</summary>
+        <poster>assets/Incantation Poster.jpg</poster>
+    </movie>
+    <movie>
+        <title>Anyone But You</title>
+        <year>2023</year>
+        <genre>Romance, Comedy</genre>
+        <director>Will Gluck</director>
+        <summary>Despite having an amazing first date, Bea and Ben's initial attraction quickly turns sour...</summary>
+        <poster>assets/Anyone But You Poster.jpg</poster>
+    </movie>
+</movies>
